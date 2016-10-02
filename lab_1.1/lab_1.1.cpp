@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <cmath>
+#define G 9.8f
 
 /*
 - Программа получает на вход высоту прыжка.
@@ -25,15 +26,14 @@
 */
 float calcTimeOfCurrentHeight(int Height)
 {
-	return sqrt(Height * 2 / 9.8f);
+	return sqrt(Height * 2 / G);
 }
 float calcСurrentHeight(float initialSpeed, float TimePoint)
 {
-	return initialSpeed * TimePoint - 0.5 * 9.8f * TimePoint * TimePoint;
+	return initialSpeed * TimePoint - 0.5 * G * TimePoint * TimePoint;
 }
 int main()
 {
-	const float g = 9.8f;
 	float timeOfMaxHeight;
 	float currentHeight;
 	int maxHeight;
