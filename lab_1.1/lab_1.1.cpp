@@ -58,8 +58,5 @@ int main()
 	float currentHeight = initialSpeed * (timeOfMaxHeight * 2) - 0.5 * g * (timeOfMaxHeight * 2) * (timeOfMaxHeight * 2);
 	printf("t=%f, s=%f\n", timeOfMaxHeight * 2, currentHeight);
 
-	// TODO: remove system("pause") and never use it again.
-	system("pause");
-
 	return 0;
 }
