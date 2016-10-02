@@ -24,7 +24,7 @@
 		b) вывод времени достижения начальной высоты прыжка (конец прыжка)
 */
 
-int main(int, char *[])
+int main()
 {
 	const float g = 9.8f;
 	float T;
