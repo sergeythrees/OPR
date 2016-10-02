@@ -24,6 +24,16 @@
 		a) вывод времени достижения максимальной высоты прыжка (середина прыжка)
 		b) вывод времени достижения начальной высоты прыжка (конец прыжка)
 */
+int getInput(int &maxHeight)
+{
+	printf("Enter jump height: ");
+	if (scanf("%d", &maxHeight) == 0)
+	{
+		printf("\n" "expected floating-point number" "\n");
+		return 0;
+	}
+	return 1;
+}
 float calcTimeOfCurrentHeight(int Height)
 {
 	return sqrt(Height * 2 / G);
@@ -35,12 +45,9 @@ float calcСurrentHeight(float initialSpeed, float TimePoint)
 int main()
 {
 	int maxHeight;
-	printf("S: ");
-	if (0 == scanf("%d", &maxHeight))
-	{
-		printf("\n" "expected floating-point number" "\n");
+	
+	if (!getInput(maxHeight))
 		return 1;
-	}
 
 	float timeOfMaxHeight = calcTimeOfCurrentHeight(maxHeight);
 	float initialSpeed = G * timeOfMaxHeight;
