@@ -27,12 +27,12 @@
 int main()
 {
 	const float g = 9.8f;
-	float T;
+	float timeOfMaxHeight;
 	float Vn;
-	int S;
+	int maxHeight;
 	int M;
 	printf("S: ");
-	if (0 == scanf("%d", &S))
+	if (0 == scanf("%d", &maxHeight))
 	{
 		printf("\n" "expected floating-point number" "\n");
 		exit(1);
@@ -42,26 +42,26 @@ int main()
 	// v(t) == v0 - g * t
 	// v0 = g * T
 	// s(t) == v0 * t - 0.5 * g * t * t
-	T = sqrt(S * 2 / g);
-	printf("T=%f\n", T);
+	timeOfMaxHeight = sqrt(maxHeight * 2 / g);
+	printf("T=%f\n", timeOfMaxHeight);
 	bool flag = false;
-	for (float t = 0; t < T * 2; t += 0.1f)
+	for (float currentTimePoint = 0; currentTimePoint < timeOfMaxHeight * 2; currentTimePoint += 0.1f)
 	{
-		if (t > T && !flag)
+		if (currentTimePoint > timeOfMaxHeight && !flag)
 		{
 			flag = true;
-			float V0 = g * T;
-			float s = V0 * T - 0.5 * g * T * T;
-			printf("t=%f, s=%f\n", T, s);
+			float initialSpeed = g * timeOfMaxHeight;
+			float s = initialSpeed * timeOfMaxHeight - 0.5 * g * timeOfMaxHeight * timeOfMaxHeight;
+			printf("t=%f, s=%f\n", timeOfMaxHeight, s);
 		}
-		float V0 = g * T;
-		float s = V0 * t - 0.5 * g * t * t;
-		printf("t=%f, s=%f\n", t, s);
+		float initialSpeed = g * timeOfMaxHeight;
+		float s = initialSpeed * currentTimePoint - 0.5 * g * currentTimePoint * currentTimePoint;
+		printf("t=%f, s=%f\n", currentTimePoint, s);
 	}
 
-	float V0 = g * T;
-	float s = V0 * (T * 2) - 0.5 * g * (T * 2) * (T * 2);
-	printf("t=%f, s=%f\n", T * 2, s);
+	float initialSpeed = g * timeOfMaxHeight;
+	float s = initialSpeed * (timeOfMaxHeight * 2) - 0.5 * g * (timeOfMaxHeight * 2) * (timeOfMaxHeight * 2);
+	printf("t=%f, s=%f\n", timeOfMaxHeight * 2, s);
 
 	// TODO: remove system("pause") and never use it again.
 	system("pause");
