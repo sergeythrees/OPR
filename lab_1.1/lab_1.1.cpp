@@ -47,24 +47,25 @@ void calcStartingValues(int maxHeight, float &timeOfMaxHeight, float &initialSpe
 	timeOfMaxHeight = calcTimeOfCurrentHeight(maxHeight);
 	initialSpeed = G * timeOfMaxHeight;
 }
+void printCurrentHeight(float &initialSpeed, float currentTimePoint)
+{
+	float currentHeight = calc—urrentHeight(initialSpeed, currentTimePoint);
+	printf("t=%f, s=%f\n", currentTimePoint, currentHeight);
+}
 void statsHeightAndTime(float &timeOfMaxHeight, float &initialSpeed)
 {
-	float currentHeight;
 	bool isMaxHeight = false;
 	for (float currentTimePoint = 0; currentTimePoint < timeOfMaxHeight * 2; currentTimePoint += 0.1f)
 	{
 		if (currentTimePoint > timeOfMaxHeight && !isMaxHeight)
 		{
 			isMaxHeight = true;
-			currentHeight = calc—urrentHeight(initialSpeed, timeOfMaxHeight);
-			printf("t=%f, s=%f\n", timeOfMaxHeight, currentHeight);
+			printCurrentHeight(initialSpeed, currentTimePoint);
 		}
-		currentHeight = calc—urrentHeight(initialSpeed, currentTimePoint);
-		printf("t=%f, s=%f\n", currentTimePoint, currentHeight);
+		printCurrentHeight(initialSpeed, currentTimePoint);
 	}
 
-	currentHeight = calc—urrentHeight(initialSpeed, timeOfMaxHeight * 2);
-	printf("t=%f, s=%f\n", timeOfMaxHeight * 2, currentHeight);
+	printCurrentHeight(initialSpeed, timeOfMaxHeight * 2);
 }
 int main()
 {
