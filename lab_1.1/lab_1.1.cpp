@@ -34,8 +34,6 @@ float calc—urrentHeight(float initialSpeed, float TimePoint)
 }
 int main()
 {
-	float timeOfMaxHeight;
-	float currentHeight;
 	int maxHeight;
 	printf("S: ");
 	if (0 == scanf("%d", &maxHeight))
@@ -43,8 +41,10 @@ int main()
 		printf("\n" "expected floating-point number" "\n");
 		return 1;
 	}
-	timeOfMaxHeight = calcTimeOfCurrentHeight(maxHeight);
-	float initialSpeed = g * timeOfMaxHeight;
+
+	float timeOfMaxHeight = calcTimeOfCurrentHeight(maxHeight);
+	float initialSpeed = G * timeOfMaxHeight;
+	float currentHeight;
 	printf("T=%f\n", timeOfMaxHeight);
 	bool flag = false;
 	for (float currentTimePoint = 0; currentTimePoint < timeOfMaxHeight * 2; currentTimePoint += 0.1f)
