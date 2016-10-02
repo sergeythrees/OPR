@@ -37,7 +37,7 @@ int main()
 	if (0 == scanf("%d", &maxHeight))
 	{
 		printf("\n" "expected floating-point number" "\n");
-		exit(1);
+		return 1;
 	}
 	timeOfMaxHeight = sqrt(maxHeight * 2 / g);
 	float initialSpeed = g * timeOfMaxHeight;
