@@ -15,11 +15,11 @@
 	2. Проверка корректности ввода:
 		a) число должно быть положительным
 		b) число не должно выходить за пределы максимального значения int
-	4. Расчет начальных данных
+	3. Расчет начальных данных
 		a) Расчет времени когда будет достигнута максимальная высота
 				по формуле t(h(max)) = sqrt(h(max) * 2 / g);
 		b) Расчет начальной скорости по формуле v(0) = g * t(h(max))
-	5. С шагом 0.1 вывод высоты во все моменты времени между началом и концом прыжка,
+	4. С шагом 0.1 вывод высоты во все моменты времени между началом и концом прыжка,
 				расчет по формуле h(t) = v(0)*t + g*t^2/2
 		a) вывод времени достижения максимальной высоты прыжка (середина прыжка)
 		b) вывод времени достижения начальной высоты прыжка (конец прыжка)
@@ -50,12 +50,12 @@ void calcStartingValues(int maxHeight, float &timeOfMaxHeight, float &initialSpe
 void statsHeightAndTime(float &timeOfMaxHeight, float &initialSpeed)
 {
 	float currentHeight;
-	bool flag = false;
+	bool isMaxHeight = false;
 	for (float currentTimePoint = 0; currentTimePoint < timeOfMaxHeight * 2; currentTimePoint += 0.1f)
 	{
-		if (currentTimePoint > timeOfMaxHeight && !flag)
+		if (currentTimePoint > timeOfMaxHeight && !isMaxHeight)
 		{
-			flag = true;
+			isMaxHeight = true;
 			currentHeight = calcСurrentHeight(initialSpeed, timeOfMaxHeight);
 			printf("t=%f, s=%f\n", timeOfMaxHeight, currentHeight);
 		}
@@ -75,7 +75,7 @@ int main()
 	
 	float timeOfMaxHeight, initialSpeed;
 	calcStartingValues(maxHeight, timeOfMaxHeight, initialSpeed);
-	printf("T=%f\n", timeOfMaxHeight);
+	printf("Time when height has it's maximum value = %f\n", timeOfMaxHeight);
 
 	statsHeightAndTime(timeOfMaxHeight, initialSpeed);
 
