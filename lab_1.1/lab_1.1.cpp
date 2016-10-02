@@ -13,7 +13,7 @@
 */
 
 /*
-	Псевдокод:
+Псевдокод:
 	1. Запрос максимальной высоты прыжка от пользователя
 	2. Проверка корректности ввода:
 		a) число должно быть положительным
@@ -40,6 +40,7 @@ int main()
 		exit(1);
 	}
 	timeOfMaxHeight = sqrt(maxHeight * 2 / g);
+	float initialSpeed = g * timeOfMaxHeight;
 	printf("T=%f\n", timeOfMaxHeight);
 	bool flag = false;
 	for (float currentTimePoint = 0; currentTimePoint < timeOfMaxHeight * 2; currentTimePoint += 0.1f)
@@ -47,16 +48,13 @@ int main()
 		if (currentTimePoint > timeOfMaxHeight && !flag)
 		{
 			flag = true;
-			float initialSpeed = g * timeOfMaxHeight;
 			float currentHeight = initialSpeed * timeOfMaxHeight - 0.5 * g * timeOfMaxHeight * timeOfMaxHeight;
 			printf("t=%f, s=%f\n", timeOfMaxHeight, currentHeight);
 		}
-		float initialSpeed = g * timeOfMaxHeight;
 		float currentHeight = initialSpeed * currentTimePoint - 0.5 * g * currentTimePoint * currentTimePoint;
 		printf("t=%f, s=%f\n", currentTimePoint, currentHeight);
 	}
 
-	float initialSpeed = g * timeOfMaxHeight;
 	float currentHeight = initialSpeed * (timeOfMaxHeight * 2) - 0.5 * g * (timeOfMaxHeight * 2) * (timeOfMaxHeight * 2);
 	printf("t=%f, s=%f\n", timeOfMaxHeight * 2, currentHeight);
 
