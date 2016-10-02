@@ -28,6 +28,7 @@ int main()
 {
 	const float g = 9.8f;
 	float timeOfMaxHeight;
+	float currentHeight;
 	int maxHeight;
 	printf("S: ");
 	if (0 == scanf("%d", &maxHeight))
@@ -44,14 +45,14 @@ int main()
 		if (currentTimePoint > timeOfMaxHeight && !flag)
 		{
 			flag = true;
-			float currentHeight = initialSpeed * timeOfMaxHeight - 0.5 * g * timeOfMaxHeight * timeOfMaxHeight;
+			currentHeight = initialSpeed * timeOfMaxHeight - 0.5 * g * timeOfMaxHeight * timeOfMaxHeight;
 			printf("t=%f, s=%f\n", timeOfMaxHeight, currentHeight);
 		}
-		float currentHeight = initialSpeed * currentTimePoint - 0.5 * g * currentTimePoint * currentTimePoint;
+		currentHeight = initialSpeed * currentTimePoint - 0.5 * g * currentTimePoint * currentTimePoint;
 		printf("t=%f, s=%f\n", currentTimePoint, currentHeight);
 	}
 
-	float currentHeight = initialSpeed * (timeOfMaxHeight * 2) - 0.5 * g * (timeOfMaxHeight * 2) * (timeOfMaxHeight * 2);
+	currentHeight = initialSpeed * (timeOfMaxHeight * 2) - 0.5 * g * (timeOfMaxHeight * 2) * (timeOfMaxHeight * 2);
 	printf("t=%f, s=%f\n", timeOfMaxHeight * 2, currentHeight);
 
 	return 0;
