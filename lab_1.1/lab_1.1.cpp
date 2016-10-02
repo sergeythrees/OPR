@@ -49,17 +49,17 @@ int main()
 		{
 			flag = true;
 			float initialSpeed = g * timeOfMaxHeight;
-			float s = initialSpeed * timeOfMaxHeight - 0.5 * g * timeOfMaxHeight * timeOfMaxHeight;
-			printf("t=%f, s=%f\n", timeOfMaxHeight, s);
+			float currentHeight = initialSpeed * timeOfMaxHeight - 0.5 * g * timeOfMaxHeight * timeOfMaxHeight;
+			printf("t=%f, s=%f\n", timeOfMaxHeight, currentHeight);
 		}
 		float initialSpeed = g * timeOfMaxHeight;
-		float s = initialSpeed * currentTimePoint - 0.5 * g * currentTimePoint * currentTimePoint;
-		printf("t=%f, s=%f\n", currentTimePoint, s);
+		float currentHeight = initialSpeed * currentTimePoint - 0.5 * g * currentTimePoint * currentTimePoint;
+		printf("t=%f, s=%f\n", currentTimePoint, currentHeight);
 	}
 
 	float initialSpeed = g * timeOfMaxHeight;
-	float s = initialSpeed * (timeOfMaxHeight * 2) - 0.5 * g * (timeOfMaxHeight * 2) * (timeOfMaxHeight * 2);
-	printf("t=%f, s=%f\n", timeOfMaxHeight * 2, s);
+	float currentHeight = initialSpeed * (timeOfMaxHeight * 2) - 0.5 * g * (timeOfMaxHeight * 2) * (timeOfMaxHeight * 2);
+	printf("t=%f, s=%f\n", timeOfMaxHeight * 2, currentHeight);
 
 	// TODO: remove system("pause") and never use it again.
 	system("pause");
