@@ -23,9 +23,13 @@
 		a) ‚˚‚Ó‰ ‚ÂÏÂÌË ‰ÓÒÚËÊÂÌËˇ Ï‡ÍÒËÏ‡Î¸ÌÓÈ ‚˚ÒÓÚ˚ Ô˚ÊÍ‡ (ÒÂÂ‰ËÌ‡ Ô˚ÊÍ‡)
 		b) ‚˚‚Ó‰ ‚ÂÏÂÌË ‰ÓÒÚËÊÂÌËˇ Ì‡˜‡Î¸ÌÓÈ ‚˚ÒÓÚ˚ Ô˚ÊÍ‡ (ÍÓÌÂˆ Ô˚ÊÍ‡)
 */
-float calcTimeOfCurrentHeight(int currentHeight)
+float calcTimeOfCurrentHeight(int Height)
 {
-	return sqrt(currentHeight * 2 / 9.8f);
+	return sqrt(Height * 2 / 9.8f);
+}
+float calc—urrentHeight(float initialSpeed, float TimePoint)
+{
+	return initialSpeed * TimePoint - 0.5 * 9.8f * TimePoint * TimePoint;
 }
 int main()
 {
@@ -48,14 +52,14 @@ int main()
 		if (currentTimePoint > timeOfMaxHeight && !flag)
 		{
 			flag = true;
-			currentHeight = initialSpeed * timeOfMaxHeight - 0.5 * g * timeOfMaxHeight * timeOfMaxHeight;
+			currentHeight = calc—urrentHeight(initialSpeed, timeOfMaxHeight);
 			printf("t=%f, s=%f\n", timeOfMaxHeight, currentHeight);
 		}
-		currentHeight = initialSpeed * currentTimePoint - 0.5 * g * currentTimePoint * currentTimePoint;
+		currentHeight = calc—urrentHeight(initialSpeed, currentTimePoint);
 		printf("t=%f, s=%f\n", currentTimePoint, currentHeight);
 	}
 
-	currentHeight = initialSpeed * (timeOfMaxHeight * 2) - 0.5 * g * (timeOfMaxHeight * 2) * (timeOfMaxHeight * 2);
+	currentHeight = calc—urrentHeight(initialSpeed, timeOfMaxHeight * 2);
 	printf("t=%f, s=%f\n", timeOfMaxHeight * 2, currentHeight);
 
 	return 0;
