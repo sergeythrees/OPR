@@ -23,7 +23,10 @@
 		a) вывод времени достижения максимальной высоты прыжка (середина прыжка)
 		b) вывод времени достижения начальной высоты прыжка (конец прыжка)
 */
-
+float calcTimeOfCurrentHeight(int currentHeight)
+{
+	return sqrt(currentHeight * 2 / 9.8f);
+}
 int main()
 {
 	const float g = 9.8f;
@@ -36,7 +39,7 @@ int main()
 		printf("\n" "expected floating-point number" "\n");
 		return 1;
 	}
-	timeOfMaxHeight = sqrt(maxHeight * 2 / g);
+	timeOfMaxHeight = calcTimeOfCurrentHeight(maxHeight);
 	float initialSpeed = g * timeOfMaxHeight;
 	printf("T=%f\n", timeOfMaxHeight);
 	bool flag = false;
