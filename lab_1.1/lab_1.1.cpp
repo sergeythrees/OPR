@@ -42,17 +42,23 @@ float calc—urrentHeight(float initialSpeed, float TimePoint)
 {
 	return initialSpeed * TimePoint - 0.5 * G * TimePoint * TimePoint;
 }
+void calcStartingValues(int maxHeight, float &timeOfMaxHeight, float &initialSpeed)
+{
+	timeOfMaxHeight = calcTimeOfCurrentHeight(maxHeight);
+	initialSpeed = G * timeOfMaxHeight;
+}
 int main()
 {
 	int maxHeight;
 	
 	if (!getInput(maxHeight))
 		return 1;
-
-	float timeOfMaxHeight = calcTimeOfCurrentHeight(maxHeight);
-	float initialSpeed = G * timeOfMaxHeight;
-	float currentHeight;
+	
+	float timeOfMaxHeight, initialSpeed;
+	calcStartingValues(maxHeight, timeOfMaxHeight, initialSpeed);
 	printf("T=%f\n", timeOfMaxHeight);
+
+	float currentHeight;
 	bool flag = false;
 	for (float currentTimePoint = 0; currentTimePoint < timeOfMaxHeight * 2; currentTimePoint += 0.1f)
 	{
