@@ -28,9 +28,7 @@ int main()
 {
 	const float g = 9.8f;
 	float timeOfMaxHeight;
-	float Vn;
 	int maxHeight;
-	int M;
 	printf("S: ");
 	if (0 == scanf("%d", &maxHeight))
 	{
