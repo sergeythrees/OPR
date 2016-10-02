@@ -5,14 +5,25 @@
 #include <vector>
 #include <cmath>
 
-// This program takes max jump height from input and prints
-// jump height for every time point with step 0.1 seconds.
-// Program should print all time points when height is min and max.
-//
-// TODO: Fix all warnings on high warning level (/W4, -Wall -Wextra).
-// TODO: Rename variables and split to several functions,
-// see also https://ps-group.github.io/sfml/coding_conventions.html
-// TODO: fix negative height values, fix heigh values higher than max height.
+/*
+- Программа получает на вход высоту прыжка.
+- Вычисляет и выводит время, когда будет достигнута максимальная высота
+- Затем с шагом 0.1 проходит по всем моментам времени между началом и концом прыжка и выводит высоту в этот момент времени
+- Кроме того, обязательно выводится момент середины прыжка и момент конца прыжка
+*/
+
+/*
+	Псевдокод:
+	1. Запрос максимальной высоты прыжка от пользователя
+	2. Проверка корректности ввода:
+		a) число должно быть положительным
+		b) число не должно выходить за пределы максимального значения int
+	4. Расчет времени когда будет достигнута максимальная высота и начальной скорости
+	5. С шагом 0.1 вывод высоты во все моменты времени между началом и концом прыжка
+		a) вывод времени достижения максильной высоты прыжка (середина прыжка)
+		b) вывод времени достижения начальной высоты прыжка (конец прыжка)
+*/
+
 int main(int, char *[])
 {
 	const float g = 9.8f;
