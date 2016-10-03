@@ -1,40 +1,28 @@
 ========================================================================
-    CONSOLE APPLICATION : lab_1.1 Project Overview
+    CONSOLE APPLICATION : lab_1.1 Jump Height
 ========================================================================
 
-AppWizard has created this lab_1.1 application for you.
+/*
+- Программа получает на вход высоту прыжка.
+- Вычисляет и выводит время, когда будет достигнута максимальная высота
+- Затем с шагом 0.1 проходит по всем моментам времени между началом и концом прыжка и выводит высоту в этот момент времени
+- Кроме того, обязательно выводится момент середины прыжка и момент конца прыжка
+*/
 
-This file contains a summary of what you will find in each of the files that
-make up your lab_1.1 application.
-
-
-lab_1.1.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
-
-lab_1.1.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
-
-lab_1.1.cpp
-    This is the main application source file.
-
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
-
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named lab_1.1.pch and a precompiled types file named StdAfx.obj.
-
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
+/*
+Псевдокод:
+ 1. Запрос максимальной высоты прыжка от пользователя
+ 2. Проверка корректности ввода:
+	a) число должно быть положительным
+	b) число не должно выходить за пределы максимального значения int
+ 3. Расчет начальных данных
+	a) Расчет времени когда будет достигнута максимальная высота
+		по формуле t(h(max)) = sqrt(h(max) * 2 / g);
+	b) Расчет начальной скорости по формуле v(0) = g * t(h(max))
+ 4. С шагом 0.1 вывод высоты во все моменты времени между началом и концом прыжка,
+	расчет по формуле h(t) = v(0)*t + g*t^2/2
+	a) вывод времени достижения максимальной высоты прыжка (середина прыжка)
+	b) вывод времени достижения начальной высоты прыжка (конец прыжка)
+*/
 
 /////////////////////////////////////////////////////////////////////////////
