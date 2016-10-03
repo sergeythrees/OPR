@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <cmath>
-#define G 9.8f
+#define GRAVITY_CONST 9.8f
 
 /*
 - Программа получает на вход высоту прыжка.
@@ -11,20 +11,21 @@
 
 /*
 Псевдокод:
-	1. Запрос максимальной высоты прыжка от пользователя
-	2. Проверка корректности ввода:
-		a) число должно быть положительным
-		b) число не должно выходить за пределы максимального значения int
-	3. Расчет начальных данных
-		a) Расчет времени когда будет достигнута максимальная высота
-				по формуле t(h(max)) = sqrt(h(max) * 2 / g);
-		b) Расчет начальной скорости по формуле v(0) = g * t(h(max))
-	4. С шагом 0.1 вывод высоты во все моменты времени между началом и концом прыжка,
-				расчет по формуле h(t) = v(0)*t + g*t^2/2
-		a) вывод времени достижения максимальной высоты прыжка (середина прыжка)
-		b) вывод времени достижения начальной высоты прыжка (конец прыжка)
+1. Запрос максимальной высоты прыжка от пользователя
+2. Проверка корректности ввода:
+a) число должно быть положительным
+b) число не должно выходить за пределы максимального значения int
+3. Расчет начальных данных
+a) Расчет времени когда будет достигнута максимальная высота
+по формуле t(h(max)) = sqrt(h(max) * 2 / g);
+b) Расчет начальной скорости по формуле v(0) = g * t(h(max))
+4. С шагом 0.1 вывод высоты во все моменты времени между началом и концом прыжка,
+расчет по формуле h(t) = v(0)*t + g*t^2/2
+a) вывод времени достижения максимальной высоты прыжка (середина прыжка)
+b) вывод времени достижения начальной высоты прыжка (конец прыжка)
 */
-int getInput(int &maxHeight)
+
+int GetInput(int &maxHeight)
 {
 	printf("Enter jump height: ");
 	if (scanf("%d", &maxHeight) == 0)
@@ -34,51 +35,51 @@ int getInput(int &maxHeight)
 	}
 	return 1;
 }
-float calcTimeOfCurrentHeight(int Height)
+float CalculateTimeOfCurrentHeight(int Height)
 {
-	return sqrt(Height * 2 / G);
+	return sqrt(Height * 2 / GRAVITY_CONST);
 }
-float calcСurrentHeight(float initialSpeed, float TimePoint)
+float CalculateСurrentHeight(float initialSpeed, float TimePoint)
 {
-	return initialSpeed * TimePoint - 0.5 * G * TimePoint * TimePoint;
+	return initialSpeed * TimePoint - 0.5 * GRAVITY_CONST * TimePoint * TimePoint;
 }
-void calcStartingValues(int maxHeight, float &timeOfMaxHeight, float &initialSpeed)
+void CalculateStartingValues(int maxHeight, float &timeOfMaxHeight, float &initialSpeed)
 {
-	timeOfMaxHeight = calcTimeOfCurrentHeight(maxHeight);
-	initialSpeed = G * timeOfMaxHeight;
+	timeOfMaxHeight = CalculateTimeOfCurrentHeight(maxHeight);
+	initialSpeed = GRAVITY_CONST * timeOfMaxHeight;
 }
-void printCurrentHeight(float &initialSpeed, float currentTimePoint)
+void PrintCurrentHeight(float &initialSpeed, float currentTime)
 {
-	float currentHeight = calcСurrentHeight(initialSpeed, currentTimePoint);
-	printf("t=%f, s=%f\n", currentTimePoint, currentHeight);
+	float currentHeight = CalculateСurrentHeight(initialSpeed, currentTime);
+	printf("t=%f, h=%f\n", currentTime, currentHeight);
 }
-void statsHeightAndTime(float &timeOfMaxHeight, float &initialSpeed)
+void PrintStats(float &timeOfMaxHeight, float &initialSpeed)
 {
 	bool isMaxHeight = false;
-	for (float currentTimePoint = 0; currentTimePoint < timeOfMaxHeight * 2; currentTimePoint += 0.1f)
+	printf("Time when height has it's maximum value = %f\n", timeOfMaxHeight);
+	for (float time = 0; time < timeOfMaxHeight * 2; time += 0.1f)
 	{
-		if (currentTimePoint > timeOfMaxHeight && !isMaxHeight)
+		if (time > timeOfMaxHeight && !isMaxHeight)
 		{
 			isMaxHeight = true;
-			printCurrentHeight(initialSpeed, currentTimePoint);
+			PrintCurrentHeight(initialSpeed, time);
 		}
-		printCurrentHeight(initialSpeed, currentTimePoint);
+		PrintCurrentHeight(initialSpeed, time);
 	}
 
-	printCurrentHeight(initialSpeed, timeOfMaxHeight * 2);
+	PrintCurrentHeight(initialSpeed, timeOfMaxHeight * 2);
 }
 int main()
 {
 	int maxHeight;
 	
-	if (!getInput(maxHeight))
+	if (!GetInput(maxHeight))
 		return 1;
 	
 	float timeOfMaxHeight, initialSpeed;
-	calcStartingValues(maxHeight, timeOfMaxHeight, initialSpeed);
-	printf("Time when height has it's maximum value = %f\n", timeOfMaxHeight);
+	CalculateStartingValues(maxHeight, timeOfMaxHeight, initialSpeed);
 
-	statsHeightAndTime(timeOfMaxHeight, initialSpeed);
+	PrintStats(timeOfMaxHeight, initialSpeed);
 
 	return 0;
 }
